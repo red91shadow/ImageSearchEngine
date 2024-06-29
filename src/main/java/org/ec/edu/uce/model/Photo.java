@@ -1,43 +1,13 @@
 package org.ec.edu.uce.model;
 
-
-
 public class Photo {
-    private int id;
-    private int sol;
-    private String imgSrc;
-    private String earthDate;
+    private String img_src;
 
-    // Getters and setters
-    public int getId() {
-        return id;
+    public String getImg_src() {
+        return img_src;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getSol() {
-        return sol;
-    }
-
-    public void setSol(int sol) {
-        this.sol = sol;
-    }
-
-    public String getImgSrc() {
-        return imgSrc;
-    }
-
-    public void setImgSrc(String imgSrc) {
-        this.imgSrc = imgSrc;
-    }
-
-    public String getEarthDate() {
-        return earthDate;
-    }
-
-    public void setEarthDate(String earthDate) {
-        this.earthDate = earthDate;
+    public void setImg_src(String img_src) {
+        this.img_src = img_src;
     }
 }

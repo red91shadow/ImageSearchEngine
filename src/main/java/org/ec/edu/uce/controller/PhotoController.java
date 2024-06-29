@@ -11,25 +11,28 @@ import java.util.List;
 
 
 
+import org.ec.edu.uce.model.*;
+import org.ec.edu.uce.service.*;
 
-
+import java.io.IOException;
+import java.util.List;
 
 public class PhotoController {
-    private final NasaApiService nasaApiService;
-    private final PhotoFilterService photoFilterService;
-    private final PhotoView photoView;
 
-    public PhotoController(NasaApiService nasaApiService, PhotoFilterService photoFilterService, PhotoView photoView) {
-        this.nasaApiService = nasaApiService;
-        this.photoFilterService = photoFilterService;
-        this.photoView = photoView;
+    private PhotoAPI photoAPI;
+
+    public PhotoController(PhotoAPI photoAPI) {
+        this.photoAPI = photoAPI;
     }
 
-    public void searchAndDisplayPhotos(int sol, String camera) {
-        List<Photo> photos = nasaApiService.fetchPhotos(sol, camera);
-        List<Photo> filteredPhotos = photoFilterService.filterPhotosByCamera(photos, camera);
-        photoView.setPhotos(filteredPhotos);
-        photoView.displayPhotos(filteredPhotos);
+    public List<Photo> getPhotos(String sol) {
+        try {
+            return photoAPI.getPhotos(sol);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
+
 
